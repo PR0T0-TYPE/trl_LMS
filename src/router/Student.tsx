@@ -1,0 +1,135 @@
+import { Suspense, lazy } from 'react';
+import { Navigate } from 'react-router-dom';
+// import Test from 'src/components/LMSDash/Test';
+
+import SuspenseLoader from 'src/layouts/Components/SuspenseLoader';
+
+const Loader = (Component) => (props) =>
+  (
+    <Suspense fallback={<SuspenseLoader />}>
+      <Component {...props} />
+    </Suspense>
+  );
+
+// Dashboards
+const Holidays = Loader(lazy(() => import('src/components/Holiday/Holiday')));
+const SchoolList = Loader(lazy(() => import('src/components/SchoolList/SchoolList')));
+const ChangePassword = Loader(lazy(()=> import('src/components/ChangePassword/ChangePassword')))
+const AddHomeWork = Loader(lazy(()=> import('src/components/AddHomeWork/AddHomeWork')))
+ const ViewPhotoAlbum = Loader(lazy(()=> import('src/components/ViewPhotoAlbum/ViewPhotoAlbum')))
+const AddStaff = Loader(lazy(()=> import('src/components/AddStaff/AddStaff')))
+const Login = Loader(lazy(()=> import('src/components/Login/Login')))
+const Homework = Loader(lazy(()=> import('src/components/Homework/Homework')))
+const ViewHomework = Loader(lazy(()=> import('src/components/Homework/ViewHomework')))
+const AddPhoto = Loader(lazy(()=> import('src/components/AddPhoto/AddPhoto')))
+const Dashboard = Loader(lazy(()=> import('src/components/DashBoard/DashBoard')))
+const AddStudentDetails = Loader(lazy(()=> import('src/components/AddStudentDetails/AddStudentDetails')))
+const FollowUp = Loader(lazy(()=> import('src/components/FollowUp/FollowUp')))
+const AdmissionConversion = Loader(lazy(()=> import('src/components/AdmissionConversion/AdmisssionConversion')))
+const EnquiryForm = Loader(lazy(()=> import('src/components/AddEnquiryStudentDetails/AddStudentDetails1')))
+const AdmissionForm = Loader(lazy(()=>import('src/components/AddAdmissionStudentDetails/AdmissionStudentDetails')))
+const StudentDetailsList = Loader(lazy(()=>import('src/components/StudentDetailsList/StudentDetailsList')))
+const DemoEnquiryForm = Loader(lazy(()=>import('src/components/DemoEnquiryForm/DemoEnquiryForm')))
+const DemoStudentList = Loader(lazy(()=>import('src/components/DemoStudentList/DemoStudentList')))
+const EmployeeForm = Loader(lazy(()=>import('src/components/Employee/EmployeeForm')))
+
+
+
+const studentRoutes = [
+  {
+    path: '/',
+    element: <Navigate to="holidays" replace />
+  },
+  {
+    path: 'Dashboard',
+    element: <Dashboard/>
+  },
+
+  {
+    path: 'schoolList',
+    element: <SchoolList />
+  },
+  {
+    path: 'ChangePassword',
+    element: <ChangePassword />
+  },
+  {
+    path: 'AddHomeWork',
+    element: <AddHomeWork/>
+  },
+  {
+    path: 'ViewPhotoAlbum',
+    element: <ViewPhotoAlbum/>
+  },
+  {
+    path: 'AddStaff',
+    element: <AddStaff/>
+  },
+  {
+    path: 'Login',
+    element: <Login/>
+  },
+  {
+    path:'Homework',
+    element:<Homework/>
+  },
+  {
+    path:'Homework/ViewHomework/:Id',
+    element:<ViewHomework/>
+  },
+  {
+    path:'AddPhoto',
+    element:<AddPhoto/>
+  },
+
+  {
+    path:'AddStudentDetails',
+    element:<AddStudentDetails/>
+  },
+
+  {
+    path:'AdmissionConversion',
+    element:<AdmissionConversion/>
+  },
+
+  {
+    path:'AdmissionConversion/:Id',
+    element:<AdmissionConversion/>
+    
+  },
+  {
+    path:'AddStudentDetails/FollowUp/:Id',
+    element:<FollowUp/>
+  },
+  {
+    path:'EnquiryForm',
+    element:<EnquiryForm/>
+  },
+  {
+    path:'EnquiryForm/:OperationType/:Id',
+    element:<EnquiryForm/>
+  },
+  {
+    path:'StudentDetailsList',
+    element:<StudentDetailsList/>
+  },
+  {
+    path:'DemoEnquiryForm',
+    element:<DemoEnquiryForm/>
+  },
+  {
+    path:'DemoEnquiryForm/:Id',
+    element:<DemoEnquiryForm/>
+  },
+  {
+    path:'DemoStudentList',
+    element:<DemoStudentList/>
+  },
+  {
+    path:'EmployeeForm',
+    element:<EmployeeForm/>
+  },
+  
+];
+
+export default studentRoutes;
